@@ -1,12 +1,13 @@
 /* 
 Crea una funcion que muestre por consola el nombre
  del usuario al invocarlo, pasandole el nombre como parametro */
-
+/* 
 function showName(name) {
   console.log(name)
 }
-console.log(showName('Nico'))
-/* const showName = name => console.log(name}) */
+console.log(showName('Nico')) */
+
+const showName = (name) => console.log(name)
 
 /* Mostra per consola nom i cognom del usuari mitjançant template literal, guardan-lo en variables
    i referenciant-les en límpressió del missatge. */
@@ -36,4 +37,13 @@ function fromZeroToNine() {
   }
 }
 const array = new Array(10).fill(fromZeroToNine())
-console.log(array)
+
+/* ### Crea una funció anonima autoinvocable igualada a una variable que 
+mostri per consola el nom del usuari que ha sigut pasada com a parametre ###
+
+
+ */
+
+const nameWrite = (function (n) {
+  return console.log(n)
+})()
