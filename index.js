@@ -46,4 +46,16 @@ mostri per consola el nom del usuari que ha sigut pasada com a parametre ###
 
 const nameWrite = (function (n) {
   return console.log(n)
-})()
+})()(
+  /* Mostra per la consola el resultat d'una arrow 
+function autoinvocable que sumi dos nombres. */
+
+  (a, b) => {
+    return a + b
+  },
+)()
+
+/* Crea una arrow function que, rebent un paràmetre, retorni un objecte amb
+ un atribut que tingui com a valor el paràmetre rebut. */
+
+const rename = (name) => ({ name, animal: 'Dog' })
