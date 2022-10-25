@@ -27,28 +27,29 @@ Nivell 3
  Invoca cada funció de l'array iterativament. Haurà de mostrar-se per consola el compte del 0 al 9 deu vegades. */ 
 
 
-const arrayNum = []
-
-let numeros = 0
-
-for (let index = 0; index < 10; index++) {
-  arrayNum.push((()=>{for (let i = 0; i < arrayNum.length; i++)
-{console.log(numeros) 
-    numeros++}}))
-}
-(function bucle () {for (let i = 0; i < arrayNum.length; i++) {
-    numeros = 0
-    arrayNum[i]();}   
-})()
-
+ let arrayFunciones = [];
+ function imprimeContador() {
+ for(let i = 0; i < 10; i++) {
+      console.log(i);
+      }
+  }
+ 
+ while (arrayFunciones.length<10) {
+        arrayFunciones.push(imprimeContador)
+  } 
+  
+ 
+ 
+ for(let i = 0; i <= 10; i++) {
+   let susodichafunct = arrayFunciones[i]
+   susodichafunct()
+   }
 
 /* - Exercici 2
 Crea una funció anònima autoinvocable igualada a una variable que mostri
  per consola el nom de l'usuari/ària a rebut com a paràmetre. */
 
+ let sayMyName = ((name) => {
+  console.log(`Mi nombre es: ${name}`);
+})("Nico"); 
 
- const sayMyName = ((x) => {return console.log(x)})('Nombre')
-
- sayMyName
-
- 
