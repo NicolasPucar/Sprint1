@@ -4,18 +4,18 @@ Crea una funció que, en executar-la, escrigui una frase en un fitxer.
  */
 const fs = require(`fs`);
 
-const archivo = `prueba.txt`;
+const creator = (param) => {
+	const archivo = `${param}.txt`;
 
-if (fs.existsSync(archivo)) {
-	console.log(`El archivo ya existe`);
-} else {
-	console.log(`El archivo no existe`);
-}
-const contenido = `texto de prueba que acabará saliendo en consola`;
-const creator = () => {
+	if (fs.existsSync(archivo)) {
+		console.log(`El archivo ya existe`);
+	} else {
+		console.log(`El archivo no existe`);
+	}
+	const contenido = `texto de prueba que acabará saliendo en consola`;
 	fs.writeFileSync(archivo, contenido);
 };
-creator();
+creator('prueba');
 
 /* - Exercici 2
 Crea una altra funció que mostri per consola el contingut del fitxer de l'exercici anterior. */
@@ -34,22 +34,24 @@ showOnconsole();
 
 /*   - Exercici 3
     Crea una funció que comprimeixi el fitxer del nivell 1.  */
-
 let zlib = require('zlib');
-let tipoGzip = zlib.createGzip();
-let archivoPruebaNom = './prueba.txt';
-function compresor() {
+
+function compresor(parametroNombreZip) {
+	let tipoGzip = zlib.createGzip();
+	let archivoPruebaNom = './prueba.txt';
+
 	const lector = fs.createReadStream(archivoPruebaNom);
-	const comprimidoCreador = fs.createWriteStream('./pruebaComprimida.txt.gz');
+	const comprimidoCreador = fs.createWriteStream(
+		`./${parametroNombreZip}.txt.gz`
+	);
 	lector.pipe(tipoGzip).pipe(comprimidoCreador);
 }
-compresor();
+compresor('textozipeado');
 
 /* - Exercici 1
 Crea una funció que imprimeixi recursivament 
 un missatge per la consola amb demores d'un segon. */
 
-//El reloj se detendrá 4 veces por minuto, dependiendo de la hora exacta
 let reloj = () => {
 	const ahora = new Date();
 	const ahoraHoras = ahora.getHours();
@@ -57,13 +59,10 @@ let reloj = () => {
 	const ahoraSegundos = ahora.getSeconds();
 
 	let hora = `${ahoraHoras}:${ahoraMinutos}:${ahoraSegundos}`;
-	if (ahoraSegundos === 05) return;
-	if (ahoraSegundos === 20) return;
-	if (ahoraSegundos === 35) return;
-	if (ahoraSegundos === 50) return;
+
 	setTimeout(reloj, 1000);
 	console.log(hora);
 };
 
 reloj();
-
+//He quitado los returns, tendrás que salir con Ctrl+c :D
